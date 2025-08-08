@@ -1,10 +1,23 @@
-import React from 'react';
+'use client'
+import React, { useState } from 'react';
 import { Play, ArrowRight } from 'lucide-react';
+import SignUp from '@/app/auth/SignUp';
 
 const Hero: React.FC = () => {
+  const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
+
+  const openSignupModal = () => {
+    setIsSignupModalOpen(true);
+    document.body.style.overflow = 'hidden'; 
+  };
+
+  const closeSignupModal = () => {
+    setIsSignupModalOpen(false);
+    document.body.style.overflow = 'unset';
+  };
   return (
     <>
-      <main className="min-h-screen flex flex-col items-center justify-center text-center px-6 relative overflow-hidden -mt-4">
+      <main className="min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 relative overflow-hidden -mt-4">
         {/* Solar System SVG Background */}
         <svg 
           className="absolute inset-0 w-full h-full" 
@@ -191,40 +204,50 @@ const Hero: React.FC = () => {
         {/* Content overlay */}
         <div className="relative z-10 max-w-4xl mx-auto">
           <div className="mb-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
               Why Just <span className="bg-gradient-to-r from-teal-400 to-purple-600 bg-clip-text text-transparent">
                         Generate
                     </span>
             </h1>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              When You Can <span className="bg-purple-600 text-white px-3 py-1 rounded-xl inline-block transform -rotate-1">Create?</span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+              When You Can <span className="bg-purple-600 text-white px-2 sm:px-3 py-1 rounded-lg sm:rounded-xl inline-block transform -rotate-1">Create?</span>
             </h1>
           </div>
           
           <div className="space-y-4 mb-10">
-            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light">
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light">
               Text-to-speech is just the beginning.
             </p>
-            <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto">
               <span className="font-semibold text-white">Auvra's</span> node-based workflows empower you to transcend simple voice generation.
             </p>
           </div>
         </div>
 
-        <div className="relative z-10 flex flex-col sm:flex-row gap-4 items-center justify-center">
-          <button className="group flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-purple-600 to-purple-600 text-white rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-[8px_8px_20px_rgba(0,0,0,0.3),-8px_-8px_20px_rgba(191,0,255,0.1)] hover:shadow-[4px_4px_12px_rgba(0,0,0,0.5),-4px_-4px_12px_rgba(191,0,255,0.2)] active:shadow-[inset_6px_6px_12px_rgba(0,0,0,0.3),inset_-6px_-6px_12px_rgba(191,0,255,0.1)] border border-purple-600/20 hover:bg-purple-600">
+        <div className="relative z-10 flex flex-row gap-3 sm:gap-4 items-center justify-center">
+          <button 
+            onClick={openSignupModal}
+            className="group flex items-center gap-2 px-6 sm:px-10 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-purple-600 text-white rounded-full font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-[8px_8px_20px_rgba(0,0,0,0.3),-8px_-8px_20px_rgba(191,0,255,0.1)] hover:shadow-[4px_4px_12px_rgba(0,0,0,0.5),-4px_-4px_12px_rgba(191,0,255,0.2)] active:shadow-[inset_6px_6px_12px_rgba(0,0,0,0.3),inset_-6px_-6px_12px_rgba(191,0,255,0.1)] border border-purple-600/20 hover:bg-purple-600"
+          >
             <span>Get Started</span>
             <ArrowRight size={16} />
           </button>
 
-          <button className="flex items-center gap-2 px-10 py-4 bg-black/5 backdrop-blur-sm text-white rounded-full font-semibold text-lg border-2 border-white transition-all duration-300 transform hover:scale-105 shadow-[8px_8px_20px_rgba(0,0,0,0.4),-8px_-8px_20px_rgba(255,255,255,0.02)] hover:shadow-[4px_4px_12px_rgba(0,0,0,0.6),-4px_-4px_12px_rgba(255,255,255,0.05)] active:shadow-[inset_6px_6px_12px_rgba(0,0,0,0.3),inset_-6px_-6px_12px_rgba(255,255,255,0.02)] hover:border-white hover:bg-white hover:text-black">
+          <button className="flex items-center gap-2 px-6 sm:px-10 py-3 sm:py-4 bg-black/5 backdrop-blur-sm text-white rounded-full font-semibold text-base sm:text-lg border-2 border-white transition-all duration-300 transform hover:scale-105 shadow-[8px_8px_20px_rgba(0,0,0,0.4),-8px_-8px_20px_rgba(255,255,255,0.02)] hover:shadow-[4px_4px_12px_rgba(0,0,0,0.6),-4px_-4px_12px_rgba(255,255,255,0.05)] active:shadow-[inset_6px_6px_12px_rgba(0,0,0,0.3),inset_-6px_-6px_12px_rgba(255,255,255,0.02)] hover:border-white hover:bg-white hover:text-black">
             <Play size={16} />
             <span>Watch Demo</span>
           </button>
         </div>
         
-        <div className="pb-16"></div>
+        <div className="pb-12 sm:pb-16"></div>
       </main>
+
+      {isSignupModalOpen && (
+        <SignUp
+          isOpen={isSignupModalOpen}
+          onClose={closeSignupModal}
+        />
+      )}
     </>
   );
 };
