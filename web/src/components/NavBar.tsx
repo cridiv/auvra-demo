@@ -35,7 +35,7 @@ const NavBar: React.FC = () => {
     <>
       <div className="flex justify-center bg-black text-white relative">
         <nav className="px-4 md:px-8 py-4 max-w-6xl w-full">
-          <div className="flex justify-between items-center w-full backdrop-blur-md bg-[#060606] border border-white/10 rounded-4xl px-4 md:px-6 py-3 shadow-[0_0_3px_#800080]">
+          <div className="flex justify-between items-center w-full backdrop-blur-md bg-[#060606] border border-white/10 rounded-4xl px-4 md:px-6 py-3 shadow-[0_0_3px_#8E24AA]">
             <div className="text-xl md:text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-purple-600">
               Auvra
             </div>
@@ -84,7 +84,7 @@ const NavBar: React.FC = () => {
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 md:hidden">
           <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={closeMobileMenu} />
-          <div className="absolute top-20 left-4 right-4 bg-[#060606] border border-white/10 rounded-2xl shadow-[0_0_2px_#800080] p-6">
+          <div className="absolute top-20 left-4 right-4 bg-[#060606] border border-white/10 rounded-2xl shadow-[0_0_2px_#8E24AA] p-6">
             <ul className="space-y-4 mb-6">
               <li>
                 <a
