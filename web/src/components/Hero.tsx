@@ -10,94 +10,182 @@ const Hero: React.FC = () => {
           className="absolute inset-0 w-full h-full" 
           viewBox="0 0 1920 1080" 
           preserveAspectRatio="xMidYMid slice"
-          style={{ background: '#000000' }}
+          style={{ background: 'linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%)' }}
         >
           <defs>
-            {/* Gradient for spiral paths */}
-            <linearGradient id="spiralGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style={{ stopColor: '#374151', stopOpacity: 0.8 }} />
-              <stop offset="50%" style={{ stopColor: '#4b5563', stopOpacity: 0.6 }} />
-              <stop offset="100%" style={{ stopColor: '#374151', stopOpacity: 0.4 }} />
+            {/* Gradient for orbital rings */}
+            <linearGradient id="orbitGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style={{ stopColor: '#374151', stopOpacity: 0.1 }} />
+              <stop offset="50%" style={{ stopColor: '#6b7280', stopOpacity: 0.3 }} />
+              <stop offset="100%" style={{ stopColor: '#374151', stopOpacity: 0.1 }} />
             </linearGradient>
+            
+            {/* Glow effect for center star */}
+            <radialGradient id="starGlow">
+              <stop offset="0%" style={{ stopColor: '#bf00ff', stopOpacity: 1 }} />
+              <stop offset="50%" style={{ stopColor: '#8b5cf6', stopOpacity: 0.6 }} />
+              <stop offset="100%" style={{ stopColor: '#bf00ff', stopOpacity: 0 }} />
+            </radialGradient>
+            
+            {/* Planet glows */}
+            <radialGradient id="planetGlow1">
+              <stop offset="0%" style={{ stopColor: '#6366f1', stopOpacity: 1 }} />
+              <stop offset="100%" style={{ stopColor: '#6366f1', stopOpacity: 0 }} />
+            </radialGradient>
+            
+            <radialGradient id="planetGlow2">
+              <stop offset="0%" style={{ stopColor: '#10b981', stopOpacity: 1 }} />
+              <stop offset="100%" style={{ stopColor: '#10b981', stopOpacity: 0 }} />
+            </radialGradient>
           </defs>
           
-          {/* Central sun/star */}
+          {/* Central star glow */}
           <circle 
             cx="960" 
             cy="540" 
-            r="8" 
-            fill="#bf00ff" 
-            opacity="0.8"
-          />
-          
-          {/* Orbit 1 - Inner spiral */}
-          <path 
-            d="M 960 340 Q 1160 440 1060 640 Q 860 740 760 540 Q 660 340 860 440 Q 1060 540 960 340" 
-            fill="none" 
-            stroke="#374151" 
-            strokeWidth="1.5" 
-            opacity="0.6"
-          />
-          
-          {/* Orbit 2 - Second spiral */}
-          <path 
-            d="M 960 240 Q 1360 390 1210 740 Q 760 890 610 540 Q 460 190 810 340 Q 1160 490 960 240" 
-            fill="none" 
-            stroke="#374151" 
-            strokeWidth="1.5" 
-            opacity="0.5"
-          />
-          
-          {/* Orbit 3 - Third spiral */}
-          <path 
-            d="M 960 140 Q 1560 340 1360 840 Q 660 1040 460 540 Q 260 40 760 240 Q 1260 440 960 140" 
-            fill="none" 
-            stroke="#4b5563" 
-            strokeWidth="1.5" 
+            r="25" 
+            fill="url(#starGlow)" 
             opacity="0.4"
           />
           
-          {/* Orbit 4 - Fourth spiral */}
-          <path 
-            d="M 960 40 Q 1760 290 1510 940 Q 560 1190 310 540 Q 60 -110 710 140 Q 1360 390 960 40" 
-            fill="none" 
-            stroke="#374151" 
-            strokeWidth="1.5" 
-            opacity="0.3"
+          {/* Central star */}
+          <circle 
+            cx="960" 
+            cy="540" 
+            r="6" 
+            fill="#bf00ff" 
+            opacity="1"
           />
           
-          {/* Orbit 5 - Outer spiral */}
-          <path 
-            d="M 960 -60 Q 1960 240 1660 1040 Q 460 1340 160 540 Q -140 -260 660 40 Q 1460 340 960 -60" 
+          {/* Orbital rings - Subtle opacity reduced */}
+          {/* Starting from Orbit 3 - 300px radius */}
+          <circle 
+            cx="960" 
+            cy="540" 
+            r="300" 
             fill="none" 
-            stroke="#4b5563" 
-            strokeWidth="1.5" 
+            stroke="#6b7280" 
+            strokeWidth="2" 
             opacity="0.25"
           />
           
-          {/* Additional connecting spiral elements */}
-          <path 
-            d="M 400 200 Q 600 100 800 300 Q 1000 500 1200 300 Q 1400 100 1600 300" 
+          {/* Orbit 4 - 420px radius */}
+          <circle 
+            cx="960" 
+            cy="540" 
+            r="420" 
             fill="none" 
-            stroke="#374151" 
-            strokeWidth="1" 
-            opacity="0.3"
+            stroke="#4b5563" 
+            strokeWidth="2" 
+            opacity="0.22"
           />
           
-          <path 
-            d="M 300 800 Q 500 700 700 900 Q 900 1100 1100 900 Q 1300 700 1500 900" 
+          {/* Orbit 5 - 580px radius */}
+          <circle 
+            cx="960" 
+            cy="540" 
+            r="580" 
             fill="none" 
-            stroke="#374151" 
-            strokeWidth="1" 
-            opacity="0.3"
+            stroke="#6b7280" 
+            strokeWidth="2" 
+            opacity="0.2"
           />
           
-          {/* Small orbital bodies/planets */}
-          <circle cx="1160" cy="440" r="3" fill="#6366f1" opacity="0.6" />
-          <circle cx="760" cy="640" r="2.5" fill="#10b981" opacity="0.5" />
-          <circle cx="1210" cy="740" r="2" fill="#f59e0b" opacity="0.4" />
-          <circle cx="610" cy="340" r="2" fill="#ef4444" opacity="0.5" />
-          <circle cx="1360" cy="840" r="1.5" fill="#8b5cf6" opacity="0.3" />
+          {/* Orbit 6 - 780px radius */}
+          <circle 
+            cx="960" 
+            cy="540" 
+            r="780" 
+            fill="none" 
+            stroke="#4b5563" 
+            strokeWidth="2" 
+            opacity="0.18"
+          />
+          
+          {/* Orbit 7 - 1000px radius */}
+          <circle 
+            cx="960" 
+            cy="540" 
+            r="1000" 
+            fill="none" 
+            stroke="#6b7280" 
+            strokeWidth="2" 
+            opacity="0.15"
+          />
+          
+          {/* Orbit 8 - 1250px radius */}
+          <circle 
+            cx="960" 
+            cy="540" 
+            r="1250" 
+            fill="none" 
+            stroke="#4b5563" 
+            strokeWidth="2" 
+            opacity="0.12"
+          />
+          
+          {/* Orbit 9 - 1500px radius */}
+          <circle 
+            cx="960" 
+            cy="540" 
+            r="1500" 
+            fill="none" 
+            stroke="#6b7280" 
+            strokeWidth="2" 
+            opacity="0.1"
+          />
+          
+          {/* Orbit 10 - 1800px radius */}
+          <circle 
+            cx="960" 
+            cy="540" 
+            r="1800" 
+            fill="none" 
+            stroke="#4b5563" 
+            strokeWidth="2" 
+            opacity="0.08"
+          />
+          
+          {/* Orbit 11 - 2200px radius */}
+          <circle 
+            cx="960" 
+            cy="540" 
+            r="2200" 
+            fill="none" 
+            stroke="#6b7280" 
+            strokeWidth="2" 
+            opacity="0.06"
+          />
+          
+          {/* Orbit 12 - 2700px radius */}
+          <circle 
+            cx="960" 
+            cy="540" 
+            r="2700" 
+            fill="none" 
+            stroke="#4b5563" 
+            strokeWidth="2" 
+            opacity="0.05"
+          />
+          
+          {/* Small colorful planets scattered across different orbits */}
+          {/* Planet 1 - Blue on orbit 3 */}
+          <circle cx="1260" cy="540" r="2.5" fill="#3b82f6" opacity="0.7" />
+          
+          {/* Planet 2 - Green on orbit 4 */}
+          <circle cx="960" cy="120" r="3" fill="#10b981" opacity="0.6" />
+          
+          {/* Planet 3 - Orange on orbit 5 */}
+          <circle cx="540" cy="760" r="2" fill="#f97316" opacity="0.8" />
+          
+          {/* Planet 4 - Red on orbit 6 */}
+          <circle cx="1380" cy="960" r="2.5" fill="#ef4444" opacity="0.5" />
+          
+          {/* Planet 5 - Purple on orbit 7 */}
+          <circle cx="260" cy="340" r="3" fill="#8b5cf6" opacity="0.6" />
+          
+          {/* Planet 6 - Yellow on orbit 8 */}
+          <circle cx="1660" cy="740" r="2" fill="#eab308" opacity="0.4" />
         </svg>
         
         {/* Content overlay */}
