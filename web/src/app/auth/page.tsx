@@ -1,12 +1,18 @@
 import SignUp from './SignUp';
-import React from 'react';
+import React, { useState } from 'react';
 
-const page = () => {
-    return (
-        <div>
-            <SignUp isOpen={true} onClose={() => {}} />
-        </div>
-    )
-}
+const Page = () => {
+  const [isSignUpOpen, setIsSignUpOpen] = useState(true);
 
-export default page;
+  const handleCloseSignUp = () => {
+    setIsSignUpOpen(false);
+  };
+
+  return (
+    <>
+      <SignUp isOpen={isSignUpOpen} onClose={handleCloseSignUp} />
+    </>
+  );
+};
+
+export default Page;
